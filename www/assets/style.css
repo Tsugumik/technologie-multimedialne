@@ -1,0 +1,80 @@
+body {
+    background: linear-gradient(135deg, #0f2027 0%, #203a43 50%, #2c5364 100%);
+    color: #fff;
+    font-family: 'Inter', sans-serif;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+.glass-card {
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 1.5rem;
+    padding: 2.5rem;
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+}
+
+.lab-btn {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    color: white;
+    transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+    border-radius: 1rem;
+}
+
+.lab-btn:hover {
+    background: rgba(255, 255, 255, 0.15);
+    transform: translateY(-5px);
+    color: white;
+    box-shadow: 0 15px 25px rgba(0,0,0,0.3);
+    border-color: rgba(255, 255, 255, 0.4);
+}
+
+.form-control-glass {
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(255,255,255,0.2);
+    color: white;
+    border-radius: 0.75rem;
+    padding: 0.75rem 1rem;
+}
+
+.form-control-glass:focus {
+    background: rgba(255,255,255,0.1);
+    color: white;
+    border-color: rgba(255,255,255,0.5);
+    box-shadow: 0 0 10px rgba(255,255,255,0.1);
+}
+
+.form-control-glass::placeholder {
+    color: rgba(255,255,255,0.5);
+}
+
+.btn-primary-custom {
+    background: linear-gradient(45deg, #00c6ff, #0072ff);
+    border: none;
+    color: white;
+    transition: all 0.3s ease;
+    border-radius: 0.75rem;
+    font-weight: 600;
+}
+
+.btn-primary-custom:hover {
+    box-shadow: 0 8px 20px rgba(0, 114, 255, 0.4);
+    transform: translateY(-2px);
+    color: white;
+}
+
+.text-muted-custom {
+    color: rgba(255,255,255,0.6) !important;
+}
+
+/* Utils */
+.flex-center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
