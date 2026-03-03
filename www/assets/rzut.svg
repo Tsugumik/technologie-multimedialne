@@ -1,0 +1,61 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600" width="100%" height="100%">
+  <!-- Tło działki/podłogi główny zarys -->
+  <rect width="800" height="600" fill="#f0f2f5" />
+  
+  <!-- Ściany zewnętrzne budynku -->
+  <rect x="40" y="40" width="720" height="520" fill="#ffffff" stroke="#2c3e50" stroke-width="12" />
+  
+  <!-- KOTŁOWNIA / POMIESZCZENIE TECHNICZNE (Lewy górny róg) -->
+  <rect x="46" y="46" width="250" height="250" fill="#e0e0e0" stroke="#34495e" stroke-width="6" />
+  <text x="171" y="270" font-family="Arial" font-size="20" font-weight="bold" fill="#7f8c8d" text-anchor="middle">KOTŁOWNIA</text>
+  <!-- Kocioł -->
+  <rect x="60" y="60" width="100" height="80" fill="#c0392b" rx="5" />
+  <circle cx="110" cy="100" r="15" fill="#e74c3c" />
+  <!-- Rury zasilanie/powrót -->
+  <path d="M 160 80 L 250 80" stroke="#e74c3c" stroke-width="8" fill="none" />
+  <path d="M 160 120 L 250 120" stroke="#3498db" stroke-width="8" fill="none" />
+  <text x="110" y="160" font-family="Arial" font-size="14" fill="#fff" text-anchor="middle">PIEC</text>
+
+  <!-- BIURO 1 (Prawy górny róg) -->
+  <rect x="300" y="46" width="454" height="150" fill="#fafafa" stroke="#34495e" stroke-width="6" />
+  <text x="527" y="121" font-family="Arial" font-size="24" font-weight="bold" fill="#95a5a6" text-anchor="middle">BIURO 1 (Open Space)</text>
+  <!-- Biurka -->
+  <rect x="340" y="60" width="80" height="40" fill="#bdc3c7" rx="3" />
+  <rect x="440" y="60" width="80" height="40" fill="#bdc3c7" rx="3" />
+  <rect x="540" y="60" width="80" height="40" fill="#bdc3c7" rx="3" />
+  <rect x="640" y="60" width="80" height="40" fill="#bdc3c7" rx="3" />
+
+  <!-- BIURO 2 (Środek - prawa strona) -->
+  <rect x="300" y="200" width="454" height="150" fill="#fdfdfd" stroke="#34495e" stroke-width="6" />
+  <text x="527" y="275" font-family="Arial" font-size="24" font-weight="bold" fill="#95a5a6" text-anchor="middle">BIURO 2</text>
+  <!-- Biurka -->
+  <rect x="400" y="220" width="60" height="100" fill="#bdc3c7" rx="3" />
+  <rect x="600" y="220" width="60" height="100" fill="#bdc3c7" rx="3" />
+
+  <!-- BIURO 3 / SERWEROWNIA (Dół - prawa strona) -->
+  <rect x="300" y="354" width="454" height="200" fill="#f5f6fa" stroke="#34495e" stroke-width="6" />
+  <text x="527" y="454" font-family="Arial" font-size="24" font-weight="bold" fill="#95a5a6" text-anchor="middle">BIURO 3 / IT</text>
+  <!-- Szafy Rack -->
+  <rect x="350" y="480" width="50" height="60" fill="#2c3e50" />
+  <rect x="420" y="480" width="50" height="60" fill="#2c3e50" />
+  <rect x="490" y="480" width="50" height="60" fill="#2c3e50" />
+  <rect x="560" y="480" width="50" height="60" fill="#2c3e50" />
+
+  <!-- HALL / KORYTARZ (Lewy dół) -->
+  <rect x="46" y="300" width="250" height="254" fill="#ecf0f1" stroke="#34495e" stroke-width="6" />
+  <text x="171" y="427" font-family="Arial" font-size="24" font-weight="bold" fill="#b2bec3" text-anchor="middle">KORYTARZ</text>
+  <!-- Drzwi Wejściowe -->
+  <path d="M 120 554 L 220 554" stroke="#e67e22" stroke-width="8" fill="none" />
+  
+  <!-- Drzwi wewnętrzne -->
+  <path d="M 296 100 L 296 150" stroke="#f0f2f5" stroke-width="8" fill="none" /> <!-- Z Korytarza/kotłowni -->
+  <path d="M 296 250 L 296 300" stroke="#f0f2f5" stroke-width="8" fill="none" />
+  <path d="M 296 400 L 296 450" stroke="#f0f2f5" stroke-width="8" fill="none" />
+  <path d="M 100 296 L 150 296" stroke="#f0f2f5" stroke-width="8" fill="none" /> <!-- Kotłownia - Korytarz -->
+
+  <!-- Siatka dla dodania technicznego sznytu -->
+  <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
+    <path d="M 40 0 L 0 0 0 40" fill="none" stroke="#bdc3c7" stroke-width="0.5" stroke-opacity="0.5"/>
+  </pattern>
+  <rect width="800" height="600" fill="url(#grid)" pointer-events="none" />
+</svg>
