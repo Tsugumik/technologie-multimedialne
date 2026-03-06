@@ -1,6 +1,4 @@
-<!-- Załączenie biblioteki Chart.js -->
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-<!-- FontAwesome do animowanych ikon (wiatrak, ogień) -->
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
 <style>
@@ -11,7 +9,7 @@
         position: absolute;
         padding: 5px 10px;
         background: rgba(255, 255, 255, 0.9);
-        color: #000000; /* Wymuszenie czarnego tekstu */
+        color: #000000;
         border: 2px solid black;
         border-radius: 5px;
         font-weight: bold;
@@ -20,7 +18,6 @@
     
     .icon-status { position: absolute; font-size: 2rem; display: none; }
     
-    /* Przykładowe pozycjonowanie - dostosujesz do swojego pliku SVG */
     #val-x1 { top: 20%; left: 30%; border-color: red; }
     #val-x2 { top: 40%; left: 30%; border-color: blue; }
     #val-x3 { top: 20%; left: 60%; }
@@ -40,7 +37,6 @@
     <!-- Kolumna Rzutu Budynku -->
     <div class="col-lg-7">
         <div class="scada-container">
-            <!-- Miejsce na Twój rzut w formacie SVG (wgraj go do folderu assets np. www/assets/rzut.svg) -->
             <img src="../assets/rzut.svg" alt="Rzut Budynku" class="scada-bg" onerror="this.src='https://via.placeholder.com/800x600?text=Brak+pliku+assets/rzut.svg'">
             
             <!-- Temperatury -->
