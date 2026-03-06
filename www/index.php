@@ -30,7 +30,7 @@
             </div>
             
             <div class="mt-5 text-muted-custom small">
-                Zarządzanie bazami danych pod adresem: <a href="http://localhost:8080" class="text-info text-decoration-none" target="_blank">PhpMyAdmin</a>
+                Zarządzanie bazami danych pod adresem: <a href="https://phpadmin.blazejdrozd.pl" class="text-info text-decoration-none" target="_blank">PhpMyAdmin</a>
             </div>
         </div>
     </div>
