@@ -2,7 +2,7 @@
 $lab_name = 'z12';
 $db_name = 'z12_db';
 require_once '../shared/config.php';
-require_once '../shared/auth.php'; // API również wymaga autoryzacji
+require_once '../shared/auth.php';
 require_once 'models/Measurement.php';
 
 header('Content-Type: application/json');

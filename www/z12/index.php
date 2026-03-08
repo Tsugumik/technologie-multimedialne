@@ -27,6 +27,9 @@ require_once '../shared/header.php';
         <li class="nav-item">
             <a class="nav-link <?= $page === 'table' ? 'active' : '' ?>" href="?page=table">Tabela Danych</a>
         </li>
+        <li class="nav-item">
+            <a class="nav-link <?= $page === 'geo' ? 'active' : '' ?>" href="?page=geo">Informacje o Gościach</a>
+        </li>
     </ul>
 
     <?php if ($error): ?>
