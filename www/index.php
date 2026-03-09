@@ -15,16 +15,22 @@
             <p class="mb-5 text-muted-custom fs-5">Wybierz laboratorium, do którego chcesz uzyskać dostęp. Pamiętaj, że każde laboratorium wymaga osobnego logowania i działa na odizolowanej bazie danych.</p>
             
             <div class="row g-4 justify-content-center">
-                <div class="col-md-6">
+                <div class="col-md-4">
                     <a href="/lab_test" class="btn lab-btn w-100 py-4 fs-4 fw-semibold d-flex flex-column align-items-center text-decoration-none">
                         <span style="font-size: 2.5rem; margin-bottom: 0.5rem;">🔬</span>
                         Laboratorium Testowe
                     </a>
                 </div>
-                <div class="col-md-6">
+                <div class="col-md-4">
                     <a href="/z12" class="btn lab-btn w-100 py-4 fs-4 fw-semibold d-flex flex-column align-items-center text-decoration-none">
                         <span style="font-size: 2.5rem; margin-bottom: 0.5rem;">🚨</span>
-                        Projekt Z12
+                        Projekt Z12a
+                    </a>
+                </div>
+                <div class="col-md-4">
+                    <a href="/z12b" class="btn lab-btn w-100 py-4 fs-4 fw-semibold d-flex flex-column align-items-center text-decoration-none">
+                        <span style="font-size: 2.5rem; margin-bottom: 0.5rem;">🌐</span>
+                        Projekt Z12b
                     </a>
                 </div>
             </div>

@@ -4,9 +4,9 @@ if (!isset($db_name)) {
     die("Błąd kompilacji: Brak nazwy bazy danych.");
 }
 
-$db_host = 'db';
-$db_user = 'root';
-$db_pass = 'rootpassword';
+$db_host = isset($db_host) ? $db_host : 'db';
+$db_user = isset($db_user) ? $db_user : 'root';
+$db_pass = isset($db_pass) ? $db_pass : 'rootpassword';
 
 try {
     $pdo = new PDO("mysql:host=$db_host;dbname=$db_name;charset=utf8", $db_user, $db_pass);
