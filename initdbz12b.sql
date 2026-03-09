@@ -1,0 +1,31 @@
+CREATE TABLE IF NOT EXISTS users (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    username VARCHAR(50) NOT NULL UNIQUE,
+    password VARCHAR(255) NOT NULL,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+CREATE TABLE IF NOT EXISTS pomiary (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    x1 FLOAT NOT NULL,
+    x2 FLOAT NOT NULL,
+    x3 FLOAT NOT NULL,
+    x4 FLOAT NOT NULL,
+    x5 FLOAT NOT NULL,
+    pozar TINYINT(1) DEFAULT 0,
+    zalanie TINYINT(1) DEFAULT 0,
+    wentylacja TINYINT(1) DEFAULT 0,
+    datetime TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+CREATE TABLE IF NOT EXISTS visitors (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    ip_address VARCHAR(45),
+    user_agent TEXT,
+    resolution VARCHAR(20),
+    color_depth INT,
+    cookies_enabled TINYINT(1),
+    latitude FLOAT,
+    longitude FLOAT,
+    visited_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
