@@ -18,7 +18,7 @@
                 <div class="col-md-4">
                     <a href="/lab_test" class="btn lab-btn w-100 py-4 fs-4 fw-semibold d-flex flex-column align-items-center text-decoration-none">
                         <span style="font-size: 2.5rem; margin-bottom: 0.5rem;">🔬</span>
-                        Laboratorium Testowe
+                        Lab Test
                     </a>
                 </div>
                 <div class="col-md-4">
@@ -31,6 +31,12 @@
                     <a href="/z12b" class="btn lab-btn w-100 py-4 fs-4 fw-semibold d-flex flex-column align-items-center text-decoration-none">
                         <span style="font-size: 2.5rem; margin-bottom: 0.5rem;">🌐</span>
                         Projekt Z12b
+                    </a>
+                </div>
+                <div class="col-md-4 mt-4">
+                    <a href="/z13" class="btn lab-btn w-100 py-4 fs-4 fw-semibold d-flex flex-column align-items-center text-decoration-none">
+                        <span style="font-size: 2.5rem; margin-bottom: 0.5rem;">📅</span>
+                        Projekt Z13
                     </a>
                 </div>
             </div>

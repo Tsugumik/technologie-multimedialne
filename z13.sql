@@ -1,0 +1,49 @@
+CREATE DATABASE IF NOT EXISTS z13_db DEFAULT CHARACTER SET utf8 COLLATE utf8_polish_ci;
+USE z13_db;
+
+CREATE TABLE IF NOT EXISTS pracownik (
+    idp INT AUTO_INCREMENT PRIMARY KEY,
+    login VARCHAR(50) NOT NULL UNIQUE,
+    password VARCHAR(255) NOT NULL
+);
+
+INSERT IGNORE INTO pracownik (idp, login, password) VALUES
+(1, 'admin', '$2y$10$xeMtUUuIiEBUx4A/jFLcvu7.tTL.sO87NczDzg111o4uuefTURqqG'),
+(2, 'pracownik1', '$2y$10$PP.9nGr7STpEmGhNt5cbu.dAjl5LfJQLs1H4PJdaHVcHUjYO8NDGu'),
+(3, 'pracownik2', '$2y$10$PF6EylAfRO7BEYvLiUB0dez52BSetydmVY10T2JGm42TScXC6ln6e'),
+(4, 'pracownik3', '$2y$10$2Al5yBqjG/TOtCk3iClKpeQH/K1iDSgJrt4FT9S6Fr42jUECbv2bG'),
+(5, 'pracownik4', '$2y$10$JnGp96mfqJZGA83P2QqhP.S7zpKpltQxiKx6htxc/AY96VPC60Jou');
+
+CREATE TABLE IF NOT EXISTS logowanie (
+    idl INT AUTO_INCREMENT PRIMARY KEY,
+    idp INT NOT NULL DEFAULT 0,
+    datetime DATETIME NOT NULL,
+    state INT NOT NULL
+);
+
+CREATE TABLE IF NOT EXISTS zadanie (
+    idz INT AUTO_INCREMENT PRIMARY KEY,
+    idp INT NOT NULL,
+    nazwa_zadania VARCHAR(255) NOT NULL,
+    FOREIGN KEY (idp) REFERENCES pracownik(idp) ON DELETE CASCADE
+);
+
+CREATE TABLE IF NOT EXISTS podzadanie (
+    idpz INT AUTO_INCREMENT PRIMARY KEY,
+    idz INT NOT NULL,
+    idp INT NOT NULL,
+    nazwa_podzadania VARCHAR(255) NOT NULL,
+    stan INT NOT NULL DEFAULT 0,
+    FOREIGN KEY (idz) REFERENCES zadanie(idz) ON DELETE CASCADE,
+    FOREIGN KEY (idp) REFERENCES pracownik(idp) ON DELETE CASCADE
+);
+
+CREATE TABLE IF NOT EXISTS monit (
+    idm INT AUTO_INCREMENT PRIMARY KEY,
+    idp_od INT NOT NULL,
+    idp_do INT NOT NULL,
+    tresc TEXT NOT NULL,
+    data DATETIME NOT NULL,
+    FOREIGN KEY (idp_od) REFERENCES pracownik(idp) ON DELETE CASCADE,
+    FOREIGN KEY (idp_do) REFERENCES pracownik(idp) ON DELETE CASCADE
+);
