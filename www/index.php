@@ -39,6 +39,12 @@
                         Projekt Z13
                     </a>
                 </div>
+                <div class="col-md-6">
+                    <a href="/z14" class="btn lab-btn w-100 py-4 fs-4 fw-semibold d-flex flex-column align-items-center text-decoration-none">
+                        <span style="font-size: 2.5rem; margin-bottom: 0.5rem;">🎓</span>
+                        Projekt Z14 E-learning
+                    </a>
+                </div>
             </div>
             
             <div class="mt-5 text-muted-custom small">
