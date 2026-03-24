@@ -1,9 +1,13 @@
 <?php
-if (!isset($lab_name) || $_SESSION[$lab_name]['role'] !== 'admin') {
+$lab_name = 'z15';
+$lab_title = 'Zadanie 15 - CRM';
+$db_name = 'z15';
+require_once '../shared/auth.php';
+require_once '../shared/config.php';
+
+if (!isset($_SESSION[$lab_name]) || $_SESSION[$lab_name]['role'] !== 'admin') {
     die("Brak dostępu.");
 }
-
-require_once '../shared/config.php';
 
 // Stats: Total queries
 $total_tickets = $pdo->query("SELECT COUNT(*) FROM tickets")->fetchColumn();

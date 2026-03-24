@@ -7,11 +7,12 @@ require_once '../shared/auth.php';
 $role = $_SESSION[$lab_name]['role'];
 
 if ($role === 'client') {
-    require_once 'client.php';
+    header("Location: client.php");
 } elseif ($role === 'employee') {
-    require_once 'employee.php';
+    header("Location: employee.php");
 } elseif ($role === 'admin') {
-    require_once 'admin.php';
+    header("Location: admin.php");
 } else {
     die("Nieznana rola.");
 }
+exit;

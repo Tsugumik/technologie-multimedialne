@@ -1,9 +1,13 @@
 <?php
-if (!isset($lab_name) || !in_array($_SESSION[$lab_name]['role'], ['employee', 'admin'])) {
+$lab_name = 'z15';
+$lab_title = 'Zadanie 15 - CRM';
+$db_name = 'z15';
+require_once '../shared/auth.php';
+require_once '../shared/config.php';
+
+if (!isset($_SESSION[$lab_name]) || !in_array($_SESSION[$lab_name]['role'], ['employee', 'admin'])) {
     die("Brak dostępu.");
 }
-
-require_once '../shared/config.php';
 
 $user_id = $_SESSION[$lab_name]['user_id'];
 $user_role = $_SESSION[$lab_name]['role'];
@@ -80,6 +84,11 @@ require_once '../shared/header.php';
                 </form>
                 <p class="small text-white-50">Wybierz kategorię, w której chcesz pomagać klientom.</p>
             </div>
+            <?php if ($user_role === 'admin'): ?>
+                <div class="card-footer border-light border-opacity-10">
+                    <a href="admin.php" class="btn btn-outline-info btn-sm w-100">Wróć do panelu admina</a>
+                </div>
+            <?php endif; ?>
         </div>
     </div>
 
