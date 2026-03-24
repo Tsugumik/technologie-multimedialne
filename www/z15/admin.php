@@ -37,11 +37,13 @@ function getSpeedIcon($count, $avg) {
     return '🐆 (Puma)';
 }
 
-// Stats per topic
+// Stats per topic (answers per topic)
 $topic_stats = $pdo->query("
-    SELECT top.name, COUNT(t.id) as ticket_count
+    SELECT top.name, COUNT(tm.id) as answer_count
     FROM topics top
     LEFT JOIN tickets t ON top.id = t.topic_id
+    LEFT JOIN ticket_messages tm ON t.id = tm.ticket_id
+    LEFT JOIN users u ON tm.sender_id = u.id AND u.role IN ('employee', 'admin')
     GROUP BY top.id
 ")->fetchAll();
 
@@ -129,14 +131,14 @@ require_once '../shared/header.php';
                     <thead>
                         <tr>
                             <th>Kategoria</th>
-                            <th>Liczba zgłoszeń</th>
+                            <th>Liczba odpowiedzi</th>
                         </tr>
                     </thead>
                     <tbody>
                         <?php foreach ($topic_stats as $top): ?>
                             <tr>
                                 <td><?= htmlspecialchars($top['name']) ?></td>
-                                <td><?= $top['ticket_count'] ?></td>
+                                <td><?= $top['answer_count'] ?></td>
                             </tr>
                         <?php endforeach; ?>
                     </tbody>
