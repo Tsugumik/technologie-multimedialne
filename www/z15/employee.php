@@ -19,7 +19,7 @@ $current_spec = $stmt->fetchColumn();
 
 // If admin and no specialization, maybe they want to see all?
 if (isset($_POST['set_specialization'])) {
-    $new_spec = $_POST['specialization_id'] ?? null;
+    $new_spec = !empty($_POST['specialization_id']) ? $_POST['specialization_id'] : null;
     $stmt = $pdo->prepare("UPDATE users SET specialization_id = ? WHERE id = ?");
     $stmt->execute([$new_spec, $user_id]);
     $current_spec = $new_spec;
