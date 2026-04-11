@@ -176,9 +176,9 @@ $current_view = $_GET['view'] ?? 'about';
             <a class="nav-link <?= $current_view === 'map' ? 'active' : '' ?>" href="?view=map">Jak do nas dotrzeć</a>
             <a class="nav-link <?= $current_view === 'offer' ? 'active' : '' ?>" href="?view=offer">Oferta</a>
             <a class="nav-link <?= $current_view === 'chatbot' ? 'active' : '' ?>" href="?view=chatbot">Chatbot</a>
-            <a class="nav-link <?= $current_view === 'history' ? 'active' : '' ?>" href="?view=history">Historia Chatbota</a>
             
             <?php if ($isAdmin): ?>
+                <a class="nav-link <?= $current_view === 'history' ? 'active' : '' ?>" href="?view=history">Historia Chatbota</a>
                 <a class="nav-link <?= $current_view === 'logins' ? 'active' : '' ?>" href="?view=logins">Historia Logowań</a>
             <?php endif; ?>
         </nav>
@@ -281,7 +281,7 @@ $current_view = $_GET['view'] ?? 'about';
                     </div>
                 </div>
 
-            <?php elseif ($current_view === 'history'): ?>
+            <?php elseif ($current_view === 'history' && $isAdmin): ?>
                 <h2>Historia Chatbota</h2>
                 <div class="table-responsive">
                     <table class="table table-dark table-hover table-striped border-light border-opacity-10">
