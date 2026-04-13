@@ -1,0 +1,45 @@
+<aiml version="1.0.1" encoding="UTF-8">
+    <!-- Powitania -->
+    <category><pattern>CZEŚĆ</pattern><template>Witaj Szanowny Kliencie!</template></category>
+    <category><pattern>CZESC</pattern><template>Witaj Szanowny Kliencie!</template></category>
+    <category><pattern>DZIEŃ DOBRY</pattern><template>Witaj Szanowny Kliencie!</template></category>
+    <category><pattern>DZIEŃ DOBRY *</pattern><template>Witaj Szanowny Kliencie!</template></category>
+    <category><pattern>HEJ</pattern><template>Witaj! W czym mogę Ci pomóc?</template></category>
+    <category><pattern>HEJ *</pattern><template>Witaj! W czym mogę Ci pomóc?</template></category>
+    <category><pattern>WITAM</pattern><template>Witaj Szanowny Kliencie!</template></category>
+    <category><pattern>WITAM *</pattern><template>Witaj Szanowny Kliencie!</template></category>
+
+    <!-- KONTAKT - Biblioteka a2design wymaga takiej samej liczby tokenów dla * -->
+    <category><pattern>KONTAKT</pattern><template>DANE_KONTAKTOWE</template></category>
+    <category><pattern>PODAJ KONTAKT</pattern><template>DANE_KONTAKTOWE</template></category>
+    <category><pattern>JAKIE DANE KONTAKTOWE</pattern><template>DANE_KONTAKTOWE</template></category>
+    <category><pattern>TELEFON</pattern><template>DANE_KONTAKTOWE</template></category>
+    <category><pattern>NUMER TELEFONU</pattern><template>DANE_KONTAKTOWE</template></category>
+    <category><pattern>ADRES</pattern><template>DANE_KONTAKTOWE</template></category>
+    <category><pattern>EMAIL</pattern><template>DANE_KONTAKTOWE</template></category>
+    <category><pattern>MAIL</pattern><template>DANE_KONTAKTOWE</template></category>
+    <category><pattern>JAK * KONTAKT</pattern><template>DANE_KONTAKTOWE</template></category>
+    <category><pattern>PROSZĘ O KONTAKT</pattern><template>DANE_KONTAKTOWE</template></category>
+
+    <!-- NAWIGACJA / MAPA -->
+    <category><pattern>NAWIGACJA</pattern><template>DANE_NAWIGACJA</template></category>
+    <category><pattern>MAPA</pattern><template>DANE_NAWIGACJA</template></category>
+    <category><pattern>DOJAZD</pattern><template>DANE_NAWIGACJA</template></category>
+    <category><pattern>JAK DOJECHAĆ</pattern><template>DANE_NAWIGACJA</template></category>
+    <category><pattern>GDZIE JESTEŚCIE</pattern><template>DANE_NAWIGACJA</template></category>
+    <category><pattern>POKAŻ MAPĘ</pattern><template>DANE_NAWIGACJA</template></category>
+
+    <!-- OFERTA -->
+    <category><pattern>OFERTA</pattern><template>DANE_OFERTA</template></category>
+    <category><pattern>USŁUGI</pattern><template>DANE_OFERTA</template></category>
+    <category><pattern>CENNIK</pattern><template>DANE_OFERTA</template></category>
+    <category><pattern>JAKA OFERTA</pattern><template>DANE_OFERTA</template></category>
+    <category><pattern>CO SPRZEDAJECIE</pattern><template>DANE_OFERTA</template></category>
+    <category><pattern>POKAŻ OFERTĘ</pattern><template>DANE_OFERTA</template></category>
+
+    <!-- Pomoc -->
+    <category><pattern>POMOC</pattern><template>Mogę odpowiedzieć na pytania o: kontakt, dojazd, ofertę. Po prostu zapytaj!</template></category>
+    <category><pattern>H</pattern><template>Mogę odpowiedzieć na pytania o: kontakt, dojazd, ofertę. Po prostu zapytaj!</template></category>
+    <category><pattern>?</pattern><template>Mogę odpowiedzieć na pytania o: kontakt, dojazd, ofertę. Po prostu zapytaj!</template></category>
+    
+</aiml>

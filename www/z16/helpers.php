@@ -1,4 +1,7 @@
 <?php
+require_once __DIR__ . '/autoloader.php';
+use A2Design\AIML\AIML;
+
 function logLogin($pdo, $id_cms, $username, $success) {
     $ip = $_SERVER['REMOTE_ADDR'];
     $stmt = $pdo->prepare("INSERT INTO login_history (id_cms, username, ip_address, success) VALUES (?, ?, ?, ?)");
@@ -6,26 +9,35 @@ function logLogin($pdo, $id_cms, $username, $success) {
 }
 
 function getChatbotResponse($pdo, $id_cms, $question, $cms_data) {
-    $clean_question = mb_strtolower(trim($question));
-    // Remove punctuation
-    $clean_question = preg_replace('/[[:punct:]]/u', '', $clean_question);
-    // Replace multiple spaces/tabs with single space
-    $clean_question = preg_replace('/\s+/', ' ', $clean_question);
-
-    $response = "";
+    $aiml_file = __DIR__ . '/bot.aiml';
     
-    if (preg_match('/\b(cześć|czesc|dzień dobry|hejka|siema|witaj|witam)\b/u', $clean_question)) {
-        $response = "Witaj Szanowny Kliencie!";
-    } elseif (preg_match('/\b(kontakt|adres|telefon)\b/u', $clean_question)) {
-        $response = "Kontakt: " . strip_tags($cms_data['contact']);
-    } elseif (preg_match('/\b(nawigacja)\b/u', $clean_question)) {
-        $response = "Jak do nas dotrzeć: " . strip_tags($cms_data['google_map_link']);
-    } elseif (preg_match('/\b(oferta)\b/u', $clean_question)) {
-        $response = "Nasza oferta: " . strip_tags($cms_data['offer']);
-    } elseif ($clean_question === '?' || $clean_question === 'h') {
-        $response = "Mogę odpowiedzieć na pytania o: cześć, kontakt, nawigacja, oferta. Wpisz jedno z tych słów.";
-    } else {
-        $response = "Jestem tylko początkującym botem i nie znam odpowiedzi na to pytanie.";
+    if (!file_exists($aiml_file)) {
+        return "Błąd: Brak pliku bazy wiedzy bota.";
+    }
+
+    $aiml = new AIML();
+    $aiml->addDict($aiml_file);
+    
+    // Clean question for the library (uppercase and no punctuation is better for this library)
+    $clean_question = mb_strtoupper(trim($question));
+    $clean_question = preg_replace('/[[:punct:]]/u', '', $clean_question);
+
+    // Get answer from library
+    $response = $aiml->getAnswer($clean_question);
+
+    if (!$response || $response === '...') {
+        $response = "Jestem tylko początkującym botem i nie znam odpowiedzi na to pytanie. Spróbuj zapytać o kontakt lub ofertę.";
+    }
+
+    // Replace placeholders with real data
+    $placeholders = [
+        'DANE_KONTAKTOWE' => "Kontakt: " . strip_tags($cms_data['contact']),
+        'DANE_NAWIGACJA' => "Jak do nas dotrzeć: " . strip_tags($cms_data['google_map_link']),
+        'DANE_OFERTA' => "Nasza oferta: " . strip_tags($cms_data['offer'])
+    ];
+
+    foreach ($placeholders as $placeholder => $value) {
+        $response = str_replace($placeholder, $value, $response);
     }
 
     // Save to DB
