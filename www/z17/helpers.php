@@ -20,8 +20,13 @@ function getMaliciousDomains() {
         $filePath = __DIR__ . '/domains.txt';
         if (file_exists($filePath)) {
             $list = file($filePath, FILE_IGNORE_NEW_LINES | FILE_SKIP_EMPTY_LINES);
-            // Use array_flip for O(1) lookup
-            $domains = array_flip($list);
+            $domains = [];
+            foreach ($list as $domain) {
+                $clean = strtolower(trim($domain));
+                if (!empty($clean)) {
+                    $domains[$clean] = true;
+                }
+            }
         } else {
             $domains = [];
         }
@@ -44,26 +49,45 @@ function cleanLinks($text) {
     $domains = getMaliciousDomains();
     if (empty($domains)) return $text;
 
-    $pattern = '/(https?:\/\/[^\s]+)/i';
+    // Robust pattern for URLs and naked domains/subdomains
+    // 1. Matches http(s)://...
+    // 2. Matches www....
+    // 3. Matches domains like example.com, sub.example.pl etc.
+    $pattern = '/(?<=\s|^)((?:https?:\/\/|www\.)[^\s\)]+|(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z]{2,6}(?:\/[^\s\)]*)?)/i';
     
     return preg_replace_callback($pattern, function($matches) use ($domains) {
         $url = $matches[0];
-        $host = parse_url($url, PHP_URL_HOST);
-        if (!$host) return $url;
+        
+        // Remove trailing punctuation that might have been caught
+        $url = rtrim($url, '.,!?;:');
+        
+        $test_url = $url;
+        if (!preg_match('/^https?:\/\//i', $test_url)) {
+            $test_url = 'http://' . $test_url;
+        }
+        
+        $host = parse_url($test_url, PHP_URL_HOST);
+        if (!$host) return $matches[0];
 
         $host = strtolower($host);
         
+        // Remove 'www.' prefix for checking if the base domain is malicious
+        $check_host = $host;
+        if (substr($check_host, 0, 4) === 'www.') {
+            $check_host = substr($check_host, 4);
+        }
+
         // Check exact host and all its parent domains
-        $parts = explode('.', $host);
+        $parts = explode('.', $check_host);
         while (count($parts) >= 2) {
-            $check = implode('.', $parts);
-            if (isset($domains[$check])) {
+            $curr = implode('.', $parts);
+            if (isset($domains[$curr])) {
                 return date('Y-m-d H:i') . ' Usunięto niebezpieczny link';
             }
             array_shift($parts);
         }
         
-        return $url;
+        return $matches[0];
     }, $text);
 }
 
