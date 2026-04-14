@@ -1,20 +1,39 @@
 <?php
 
 function getProfanityList() {
-    // Only 'cholera' for testing as per instruction hint, but can be expanded
-    return ['cholera', 'cholerny', 'cholerstwo'];
+    static $profanity = null;
+    if ($profanity === null) {
+        $filePath = __DIR__ . '/wulgaryzmy.php';
+        if (file_exists($filePath)) {
+            include $filePath;
+            $profanity = isset($wulgaryzmy_pl) ? $wulgaryzmy_pl : [];
+        } else {
+            $profanity = [];
+        }
+    }
+    return $profanity;
 }
 
 function getMaliciousDomains() {
-    // Mock list, in real case would fetch from cert.pl or similar
-    return ['malware.com', 'phishing.pl', 'dangerous-link.xyz', 'evil.ru'];
+    static $domains = null;
+    if ($domains === null) {
+        $filePath = __DIR__ . '/domains.txt';
+        if (file_exists($filePath)) {
+            $list = file($filePath, FILE_IGNORE_NEW_LINES | FILE_SKIP_EMPTY_LINES);
+            // Use array_flip for O(1) lookup
+            $domains = array_flip($list);
+        } else {
+            $domains = [];
+        }
+    }
+    return $domains;
 }
 
 function containsProfanity($text) {
     $profanity = getProfanityList();
     $text = mb_strtolower($text);
     foreach ($profanity as $word) {
-        if (mb_strpos($text, $word) !== false) {
+        if (!empty($word) && mb_strpos($text, $word) !== false) {
             return true;
         }
     }
@@ -23,17 +42,27 @@ function containsProfanity($text) {
 
 function cleanLinks($text) {
     $domains = getMaliciousDomains();
+    if (empty($domains)) return $text;
+
     $pattern = '/(https?:\/\/[^\s]+)/i';
     
     return preg_replace_callback($pattern, function($matches) use ($domains) {
         $url = $matches[0];
         $host = parse_url($url, PHP_URL_HOST);
+        if (!$host) return $url;
+
+        $host = strtolower($host);
         
-        foreach ($domains as $domain) {
-            if ($host === $domain || (strlen($host) > strlen($domain) && substr($host, -(strlen($domain) + 1)) === '.' . $domain)) {
+        // Check exact host and all its parent domains
+        $parts = explode('.', $host);
+        while (count($parts) >= 2) {
+            $check = implode('.', $parts);
+            if (isset($domains[$check])) {
                 return date('Y-m-d H:i') . ' Usunięto niebezpieczny link';
             }
+            array_shift($parts);
         }
+        
         return $url;
     }, $text);
 }
