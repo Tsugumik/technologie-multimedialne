@@ -89,8 +89,8 @@ function addWatermark($imagePath) {
     $font_width = imagefontwidth($font) * strlen($text);
     $font_height = imagefontheight($font);
 
-    $x = ($width - $font_width) / 2;
-    $y = ($height - $font_height) / 2;
+    $x = (int)(($width - $font_width) / 2);
+    $y = (int)(($height - $font_height) / 2);
 
     $color = imagecolorallocatealpha($img, 255, 255, 255, 60);
     $shadow = imagecolorallocatealpha($img, 0, 0, 0, 60);
