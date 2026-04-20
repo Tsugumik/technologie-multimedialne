@@ -24,16 +24,19 @@ function getGalleryDir($username, $folder_id) {
 
 function applyFilter($imagePath, $filter) {
     if ($filter === 'none') return;
+    if (!function_exists('imagecreatefromjpeg')) return; // GD not installed
 
     $info = getimagesize($imagePath);
     $mime = $info['mime'];
 
     switch ($mime) {
-        case 'image/jpeg': $img = imagecreatefromjpeg($imagePath); break;
-        case 'image/png': $img = imagecreatefrompng($imagePath); break;
-        case 'image/gif': $img = imagecreatefromgif($imagePath); break;
+        case 'image/jpeg': $img = @imagecreatefromjpeg($imagePath); break;
+        case 'image/png': $img = @imagecreatefrompng($imagePath); break;
+        case 'image/gif': $img = @imagecreatefromgif($imagePath); break;
         default: return;
     }
+
+    if (!$img) return;
 
     switch ($filter) {
         case 'greyscale':
@@ -64,15 +67,19 @@ function applyFilter($imagePath, $filter) {
 }
 
 function addWatermark($imagePath) {
+    if (!function_exists('imagecreatefromjpeg')) return; // GD not installed
+
     $info = getimagesize($imagePath);
     $mime = $info['mime'];
 
     switch ($mime) {
-        case 'image/jpeg': $img = imagecreatefromjpeg($imagePath); break;
-        case 'image/png': $img = imagecreatefrompng($imagePath); break;
-        case 'image/gif': $img = imagecreatefromgif($imagePath); break;
+        case 'image/jpeg': $img = @imagecreatefromjpeg($imagePath); break;
+        case 'image/png': $img = @imagecreatefrompng($imagePath); break;
+        case 'image/gif': $img = @imagecreatefromgif($imagePath); break;
         default: return;
     }
+
+    if (!$img) return;
 
     $width = imagesx($img);
     $height = imagesy($img);
