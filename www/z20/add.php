@@ -100,7 +100,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     </style>
 </head>
 <body>
-    <?php include __DIR__ . '/../shared/header.php'; ?>
+    <?php include __DIR__ . '/header.php'; ?>
 
     <div class="row justify-content-center">
         <div class="col-lg-10">

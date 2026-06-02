@@ -105,7 +105,7 @@ $logs = $pdo->query("SELECT * FROM login_logs ORDER BY timestamp DESC LIMIT 100"
     </style>
 </head>
 <body>
-    <?php include __DIR__ . '/../shared/header.php'; ?>
+    <?php include __DIR__ . '/header.php'; ?>
 
     <div class="glass-card mb-4">
         <div class="d-flex justify-content-between align-items-center mb-4 border-bottom border-light border-opacity-10 pb-3">
