@@ -178,17 +178,17 @@ $can_manage = isLoggedIn() && ($announcement['user_id'] == $current_user_id || i
                         <span class="small">&rarr;</span>
                     </a>
 
-                    <a href="https://polska.e-mapa.net/?x=<?= $announcement['longitude'] ?>&y=<?= $announcement['latitude'] ?>&z=17" target="_blank" class="btn btn-outline-info text-start d-flex justify-content-between align-items-center py-2.5 px-3 rounded-3">
+                    <a href="https://polska.e-mapa.net/" target="_blank" class="btn btn-outline-info text-start d-flex justify-content-between align-items-center py-2.5 px-3 rounded-3">
                         <span>📊 <strong>polska.e-mapa.net</strong> (rejestr cen, plany zagospodarowania)</span>
                         <span class="small">&rarr;</span>
                     </a>
 
-                    <a href="https://polska.geoportal2.pl/map/www/mapa.php?mapa=polska&x=<?= $announcement['longitude'] ?>&y=<?= $announcement['latitude'] ?>&z=17" target="_blank" class="btn btn-outline-warning text-start d-flex justify-content-between align-items-center py-2.5 px-3 rounded-3">
+                    <a href="https://polska.geoportal2.pl/map/www/mapa.php?mapa=polska" target="_blank" class="btn btn-outline-warning text-start d-flex justify-content-between align-items-center py-2.5 px-3 rounded-3">
                         <span>🌊 <strong>Mapa zagrożenia powodziowego</strong> (bezpieczeństwo)</span>
                         <span class="small">&rarr;</span>
                     </a>
 
-                    <a href="https://powietrze.gios.gov.pl/pjp/current?lat=<?= $announcement['latitude'] ?>&lon=<?= $announcement['longitude'] ?>" target="_blank" class="btn btn-outline-success text-start d-flex justify-content-between align-items-center py-2.5 px-3 rounded-3">
+                    <a href="https://powietrze.gios.gov.pl/pjp/current" target="_blank" class="btn btn-outline-success text-start d-flex justify-content-between align-items-center py-2.5 px-3 rounded-3">
                         <span>🍃 <strong>Jakość powietrza (GIOŚ)</strong> (ekologia, smog)</span>
                         <span class="small">&rarr;</span>
                     </a>
